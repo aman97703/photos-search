@@ -51,7 +51,6 @@ const App = () => {
     })
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
         let newArr = [];
         if (page === 1) {
           newArr = _.uniqBy([...res.data.photos.photo], "id");
@@ -74,7 +73,6 @@ const App = () => {
     })
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
         let newArr = [];
         if (page === 1) {
           newArr = _.uniqBy([...res.data.photos.photo], "id");

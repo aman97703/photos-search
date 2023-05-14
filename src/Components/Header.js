@@ -43,9 +43,8 @@ const Header = ({
               <div
                 key={i}
                 className="d-flex align-items-start justify-content-between"
-                onClick={()=>setQuery(pq)}
               >
-                <p>{pq}</p>
+                <p onClick={() => setQuery(pq)}>{pq}</p>
                 <button
                   className="post_cancel"
                   onClick={() => clearPastQuery(i)}
