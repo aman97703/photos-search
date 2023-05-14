@@ -42,7 +42,7 @@ const App = () => {
     [loading, hasMore]
   );
 
-  const api_key = "test_api_key";
+  const api_key = "3409534c9191d716c11c908f6c2ccdf0";
 
   const getPhotos = async () => {
     setLoading(true);
