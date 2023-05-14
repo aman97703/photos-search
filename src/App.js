@@ -52,9 +52,15 @@ const App = () => {
       .then((res) => {
         setLoading(false);
         console.log(res.data);
-        const newArrr = _.uniqBy([...images, ...res.data.photos.photo], "id");
-        setHasMore(res.data.photos.pages !== res.data.photos.page);
-        setImages(newArrr);
+        let newArr = [];
+        if (page === 1) {
+          newArr = _.uniqBy([...res.data.photos.photo], "id");
+        } else {
+          newArr = _.uniqBy([...images, ...res.data.photos.photo], "id");
+        }
+        setHasMore(res.data.photos.page < res.data.photos.pages);
+        // setHasMore(res.data.photos.pages !== res.data.photos.page);
+        setImages(newArr);
       })
       .catch((err) => {
         console.log(err);
@@ -68,10 +74,15 @@ const App = () => {
     })
       .then((res) => {
         setLoading(false);
-        const newArrr = _.uniqBy([...images, ...res.data.photos.photo], "id");
         console.log(res.data);
-        setHasMore(res.data.photos.pages !== res.data.photos.page);
-        setImages(newArrr);
+        let newArr = [];
+        if (page === 1) {
+          newArr = _.uniqBy([...res.data.photos.photo], "id");
+        } else {
+          newArr = _.uniqBy([...images, ...res.data.photos.photo], "id");
+        }
+        setHasMore(res.data.photos.page < res.data.photos.pages);
+        setImages(newArr);
       })
       .catch((err) => {
         console.log(err);
@@ -187,6 +198,7 @@ const App = () => {
               }
             })}
         </div>
+        {!loading && images && images.length <= 0 && <h1>No results found</h1>}
         {loading && <Loader />}
       </div>
       <ImageModal open={open} setOpen={setOpen} image={selectedImage} />
