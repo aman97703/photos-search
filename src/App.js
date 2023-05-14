@@ -88,10 +88,12 @@ const App = () => {
       const pastData = !localStorage.getItem("search")
         ? []
         : JSON.parse(localStorage.getItem("search"));
-      const newArr = [...pastData, query];
-      localStorage.setItem("search", JSON.stringify(newArr));
+      if (!pastData.includes(query)) {
+        const newArr = [...pastData, query];
+        localStorage.setItem("search", JSON.stringify(newArr));
+        setPastQueries(newArr);
+      }
       // localStorage.setItem()
-      setPastQueries(newArr);
       getSearchPhotos(query);
     } else {
       getPhotos();

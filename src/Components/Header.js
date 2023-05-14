@@ -43,6 +43,7 @@ const Header = ({
               <div
                 key={i}
                 className="d-flex align-items-start justify-content-between"
+                onClick={()=>setQuery(pq)}
               >
                 <p>{pq}</p>
                 <button
