@@ -42,7 +42,7 @@ const App = () => {
     [loading, hasMore]
   );
 
-  const api_key = "test_api";
+  const api_key = "3409534c9191d716c11c908f6c2ccdf0";
 
   const getPhotos = async () => {
     setLoading(true);
@@ -52,7 +52,7 @@ const App = () => {
       .then((res) => {
         setLoading(false);
         let newArr = [];
-        if (page === 1) {
+        if (res.data.photos.page === 1) {
           newArr = _.uniqBy([...res.data.photos.photo], "id");
         } else {
           newArr = _.uniqBy([...images, ...res.data.photos.photo], "id");
@@ -74,7 +74,7 @@ const App = () => {
       .then((res) => {
         setLoading(false);
         let newArr = [];
-        if (page === 1) {
+        if (res.data.photos.page === 1) {
           newArr = _.uniqBy([...res.data.photos.photo], "id");
         } else {
           newArr = _.uniqBy([...images, ...res.data.photos.photo], "id");
